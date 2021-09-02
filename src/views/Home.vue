@@ -1,18 +1,36 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <router-link :to="{name:'Items',params:{id:1}}">
+      item 1
+    </router-link>
+       <router-link :to="{name:'Items',params:{id:2}}">
+      item 2  
+    </router-link>
+       <router-link :to="{name:'Items',params:{id:3}}">
+      item 3
+    </router-link>
+    {{data}}
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
-
+import axios from 'axios'
 export default {
   name: 'Home',
-  components: {
-    HelloWorld
+  data(){
+    return{
+      characters:null
+    }
+  },mounted(){
+    const response =axios.get("https://api.genshin.dev/characters/")
+    console.log(response)
+  },
+  methods:{
+    getCharacters(){
+      
+
+    }
   }
 }
 </script>
